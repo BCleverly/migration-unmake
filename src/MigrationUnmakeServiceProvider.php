@@ -16,7 +16,7 @@ class MigrationUnmakeServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
-                UnmakeMigration::class
+                UnmakeMigration::class,
             ]);
         }
     }
