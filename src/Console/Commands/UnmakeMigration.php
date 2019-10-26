@@ -11,7 +11,7 @@ class UnmakeMigration extends Command
      *
      * @var string
      */
-    protected $signature = 'migration:unmake';
+    protected $signature = 'migration:unmake {--dry-run : If you want to dry run first}';
 
     /**
      * The console command description.
@@ -40,6 +40,7 @@ class UnmakeMigration extends Command
     public function __construct()
     {
         parent::__construct();
+
         $this->getMigrationFiles();
     }
 
@@ -74,6 +75,12 @@ class UnmakeMigration extends Command
      */
     protected function removeMigrationFile(string $filePath): void
     {
+
+        if ($this->option('dry-run')) {
+            $this->info('You will be removing: '.$filePath);
+            return;
+        }
+
         $this->info('Removing: '.$filePath);
 
         try {
