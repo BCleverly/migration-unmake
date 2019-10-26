@@ -21,14 +21,15 @@ class UnmakeMigration extends Command
     protected $description = 'Removes the latest migration in your migrations folder';
 
     /**
-     * Holds the list of migration files
+     * Holds the list of migration files.
      *
      * @var array
      */
     protected $migrationFiles = [];
 
     /**
-     * Holds the path of the migration files
+     * Holds the path of the migration files.
+     *
      * @var string
      */
     private $migrationFilesPath;
@@ -49,11 +50,11 @@ class UnmakeMigration extends Command
      */
     public function handle(): void
     {
-        $this->removeMigrationFile($this->migrationFilesPath . end($this->migrationFiles));
+        $this->removeMigrationFile($this->migrationFilesPath.end($this->migrationFiles));
     }
 
     /**
-     * Gets the list of migration files
+     * Gets the list of migration files.
      *
      * @return $this
      */
@@ -67,13 +68,14 @@ class UnmakeMigration extends Command
     }
 
     /**
-     * Removes the given file
+     * Removes the given file.
      *
      * @param string $filePath
      */
     protected function removeMigrationFile(string $filePath): void
     {
-        $this->info('Removing: ' . $filePath);
+        $this->info('Removing: '.$filePath);
+
         try {
             unlink($filePath);
             $this->info('Removed file');
